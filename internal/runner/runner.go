@@ -13,7 +13,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/projectdiscovery/nuclei/v3/internal/pdcp"
+	"github.com/CyL0NG/nuclei/v3/internal/pdcp"
 	"github.com/projectdiscovery/nuclei/v3/pkg/installer"
 	uncoverlib "github.com/projectdiscovery/uncover"
 	pdcpauth "github.com/projectdiscovery/utils/auth/pdcp"
@@ -26,8 +26,8 @@ import (
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/ratelimit"
 
+	"github.com/CyL0NG/nuclei/v3/internal/colorizer"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/nuclei/v3/internal/colorizer"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog/config"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog/disk"

@@ -15,11 +15,11 @@ import (
 	"github.com/projectdiscovery/utils/auth/pdcp"
 	_ "github.com/projectdiscovery/utils/pprof"
 
+	"github.com/CyL0NG/nuclei/v3/internal/runner"
 	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/gologger/levels"
 	"github.com/projectdiscovery/interactsh/pkg/client"
-	"github.com/projectdiscovery/nuclei/v3/internal/runner"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog/config"
 	"github.com/projectdiscovery/nuclei/v3/pkg/installer"
 	"github.com/projectdiscovery/nuclei/v3/pkg/model/types/severity"

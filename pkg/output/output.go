@@ -18,9 +18,9 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/logrusorgru/aurora"
 
+	"github.com/CyL0NG/nuclei/v3/internal/colorizer"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/interactsh/pkg/server"
-	"github.com/projectdiscovery/nuclei/v3/internal/colorizer"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog/config"
 	"github.com/projectdiscovery/nuclei/v3/pkg/model"
 	"github.com/projectdiscovery/nuclei/v3/pkg/model/types/severity"
@@ -379,7 +379,7 @@ func (w *StandardWriter) WriteFailure(wrappedEvent *InternalWrappedEvent) error 
 		Response:      types.ToString(event["response"]),
 		MatcherStatus: false,
 		Timestamp:     time.Now(),
-		//FIXME: this is workaround to encode the template when no results were found
+		// FIXME: this is workaround to encode the template when no results were found
 		TemplateEncoded: w.encodeTemplate(types.ToString(event["template-path"])),
 		Error:           types.ToString(event["error"]),
 	}
