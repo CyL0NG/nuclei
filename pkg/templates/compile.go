@@ -24,7 +24,6 @@ import (
 	"github.com/projectdiscovery/nuclei/v3/pkg/utils"
 	"github.com/projectdiscovery/retryablehttp-go"
 	errorutil "github.com/projectdiscovery/utils/errors"
-	stringsutil "github.com/projectdiscovery/utils/strings"
 )
 
 var (
@@ -218,12 +217,6 @@ mainLoop:
 		hasPaths := len(req.Path) > 0
 		if !hasPaths {
 			break mainLoop
-		}
-		for _, path := range req.Path {
-			pathIsBaseURL := stringsutil.EqualFoldAny(path, "{{BaseURL}}", "{{BaseURL}}/", "/")
-			if !pathIsBaseURL {
-				break mainLoop
-			}
 		}
 		operatorsList = append(operatorsList, &req.Operators)
 	}
