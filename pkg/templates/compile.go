@@ -40,6 +40,7 @@ const (
 )
 
 func init() {
+	fmt.Println("custom patch nuclei")
 	for _, verifier := range signer.DefaultTemplateVerifiers {
 		SignatureStats[verifier.Identifier()] = &atomic.Uint64{}
 	}
