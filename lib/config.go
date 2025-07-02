@@ -3,12 +3,11 @@ package nuclei
 import (
 	"context"
 	"errors"
+	"github.com/projectdiscovery/ratelimit"
 	"time"
 
 	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/ratelimit"
-
 	"github.com/projectdiscovery/nuclei/v3/pkg/authprovider"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog"
 	"github.com/projectdiscovery/nuclei/v3/pkg/model/types/severity"
@@ -231,7 +230,7 @@ func EnableStatsWithOpts(opts StatsOptions) NucleiSDKOptions {
 			return ErrOptionsNotSupported.Msgf("EnableStatsWithOpts")
 		}
 		if opts.Interval == 0 {
-			opts.Interval = 5 //sec
+			opts.Interval = 5 // sec
 		}
 		e.opts.StatsInterval = opts.Interval
 		e.enableStats = true

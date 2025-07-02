@@ -1,8 +1,10 @@
 module github.com/projectdiscovery/nuclei/v3
 
-go 1.23.0
+go 1.23.6
 
 toolchain go1.24.1
+
+replace github.com/projectdiscovery/interactsh => ../interactsh
 
 require (
 	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible

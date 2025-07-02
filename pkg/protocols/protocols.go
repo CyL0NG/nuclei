@@ -124,7 +124,7 @@ type ExecutorOptions struct {
 	JsCompiler *compiler.Compiler
 	// AuthProvider is a provider for auth strategies
 	AuthProvider authprovider.AuthProvider
-	//TemporaryDirectory is the directory to store temporary files
+	// TemporaryDirectory is the directory to store temporary files
 	TemporaryDirectory string
 	Parser             parser.Parser
 	// ExportReqURLPattern exports the request URL pattern

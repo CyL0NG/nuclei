@@ -744,7 +744,7 @@ func (request *Request) executeRequest(input *contextargs.Context, generatedRequ
 			Options: &options,
 		})
 	} else {
-		//** For Normal requests **//
+		// ** For Normal requests **//
 		hostname = generatedRequest.request.URL.Host
 		formedURL = generatedRequest.request.URL.String()
 		// if nuclei-project is available check if the request was already sent previously

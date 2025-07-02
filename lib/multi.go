@@ -2,6 +2,7 @@ package nuclei
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/logrusorgru/aurora"
@@ -124,7 +125,7 @@ func (e *ThreadSafeNucleiEngine) GlobalResultCallback(callback func(event *outpu
 // This method can be called concurrently and it will use some global resources but can be runned parallelly
 // by invoking this method with different options and targets
 // Note: Not all options are thread-safe. this method will throw error if you try to use non-thread-safe options
-func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOptsCtx(ctx context.Context, targets []string, opts ...NucleiSDKOptions) error {
+func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOptsCtx(ctx context.Context, targets []string, callback func(*output.ResultEvent), opts ...NucleiSDKOptions) error {
 	baseOpts := *e.eng.opts
 	tmpEngine := &NucleiEngine{opts: &baseOpts, mode: threadSafe}
 	for _, option := range opts {
@@ -166,7 +167,7 @@ func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOptsCtx(ctx context.Context, t
 	engine := core.New(tmpEngine.opts)
 	engine.SetExecuterOptions(unsafeOpts.executerOpts)
 
-	_ = engine.ExecuteScanWithOpts(ctx, store.Templates(), inputProvider, false)
+	_ = engine.ExecuteWithResults(ctx, store.Templates(), inputProvider, callback)
 
 	engine.WorkPool().Wait()
 	return nil
@@ -174,8 +175,8 @@ func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOptsCtx(ctx context.Context, t
 
 // ExecuteNucleiWithOpts is same as ExecuteNucleiWithOptsCtx but with default context
 // This is a placeholder and will be deprecated in future major release
-func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOpts(targets []string, opts ...NucleiSDKOptions) error {
-	return e.ExecuteNucleiWithOptsCtx(context.Background(), targets, opts...)
+func (e *ThreadSafeNucleiEngine) ExecuteNucleiWithOpts(targets []string, callback func(*output.ResultEvent), opts ...NucleiSDKOptions) error {
+	return e.ExecuteNucleiWithOptsCtx(context.Background(), targets, callback, opts...)
 }
 
 // Close all resources used by nuclei engine
