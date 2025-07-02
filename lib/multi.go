@@ -2,7 +2,6 @@ package nuclei
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/logrusorgru/aurora"
@@ -42,6 +41,7 @@ func createEphemeralObjects(ctx context.Context, base *NucleiEngine, opts *types
 		ResumeCfg:       types.NewResumeCfg(),
 		Parser:          base.parser,
 		Browser:         base.browserInstance,
+		DoNotCache:      true,
 	}
 	if opts.ShouldUseHostError() && base.hostErrCache != nil {
 		u.executerOpts.HostErrorsCache = base.hostErrCache
